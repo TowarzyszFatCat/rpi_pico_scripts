@@ -9,12 +9,15 @@ from adafruit_hid.keycode import Keycode
 
 keyboard = Keyboard(usb_hid.devices)
 
+# LED on/off
 onled = digitalio.DigitalInOut(board.GP9)
 onled.direction = digitalio.Direction.OUTPUT
 
+# LED sending signal
 led = digitalio.DigitalInOut(board.GP0)
 led.direction = digitalio.Direction.OUTPUT
 
+# LED cooldown
 led2 = digitalio.DigitalInOut(board.GP8)
 led2.direction = digitalio.Direction.OUTPUT
 
@@ -35,7 +38,8 @@ on = True
 while True:
     keys = keypad.pressed_keys
     if keys:
-        print(keys)
+        
+        # Button functions
         if on == True:
             if keys == [1]:
                 led2.value = False
@@ -48,6 +52,7 @@ while True:
                 led2.value = True
                 time.sleep(0.5)
                 led2.value = False
+                
             elif keys == [2]:
                 led2.value = False
                 keyboard.press(Keycode.F12)
@@ -59,6 +64,7 @@ while True:
                 led2.value = True
                 time.sleep(0.5)
                 led2.value = False
+                
             elif keys == [3]:
                 led2.value = False
                 keyboard.press(Keycode.F13)
@@ -82,6 +88,7 @@ while True:
                 led2.value = True
                 time.sleep(0.5)
                 led2.value = False
+                
             elif keys == [5]:
                 led2.value = False
                 keyboard.press(Keycode.F15)
@@ -93,6 +100,7 @@ while True:
                 led2.value = True
                 time.sleep(0.5)
                 led2.value = False
+                
             elif keys == [6]:
                 led2.value = False
                 keyboard.press(Keycode.F16)
@@ -116,6 +124,7 @@ while True:
                 led2.value = True
                 time.sleep(0.5)
                 led2.value = False
+                
             elif keys == [8]:
                 led2.value = False
                 keyboard.press(Keycode.F18)
@@ -127,6 +136,7 @@ while True:
                 led2.value = True
                 time.sleep(0.5)
                 led2.value = False
+                
             elif keys == [9]:
                 led2.value = False
                 keyboard.press(Keycode.F19)
@@ -163,6 +173,7 @@ while True:
                 time.sleep(0.5)
                 led2.value = False
 
+        # ON/OFF
         if keys == ["#"]:
 
             if on == True:
